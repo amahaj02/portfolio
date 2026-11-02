@@ -1,0 +1,283 @@
+{
+  "defaultProject": "aws",
+  "projects": [
+    {
+      "id": "aws",
+      "name": "AWS Automation",
+      "title": "AWS Infra Automation",
+      "subtitle": "Terraform & serverless workflows",
+      "kind": "Personal projects",
+      "context": "Cloud infrastructure",
+      "summary": "Scoped AWS roles and repeatable Lambda builds and deployments.",
+      "technologies": [
+        "Terraform",
+        "AWS IAM",
+        "GitHub Actions",
+        "Lambda",
+        "Docker"
+      ],
+      "notes": [],
+      "attribution": "Terraform Bootstrap & Lambda Infra Pipeline. December 2025–September 2026.",
+      "links": [
+        {
+          "label": "Terraform Bootstrap",
+          "url": "https://github.com/amahaj02/tf-bootstrap"
+        },
+        {
+          "label": "Lambda pipeline",
+          "url": "https://github.com/amahaj02/lambda-infra-pipeline"
+        }
+      ],
+      "placement": {
+        "mlData": 0.09,
+        "cloudPlatforms": 0.98
+      },
+      "color": "#edb08e",
+      "overview": [
+        "Managed project IAM roles with Terraform and S3-backed state. GitHub Actions authenticates through OIDC and applies a saved plan.",
+        "Built Lambda function and layer artifacts with Docker. Terraform manages the function, role, EventBridge schedule, and CloudWatch logging."
+      ]
+    },
+    {
+      "id": "pinn",
+      "name": "PINN research",
+      "title": "Physics-informed neural networks",
+      "subtitle": "Inverse differential equations",
+      "kind": "Research experience",
+      "context": "UBC Undergraduate Research Opportunities",
+      "summary": "Neural networks for inverse differential-equation problems.",
+      "technologies": [
+        "PyTorch"
+      ],
+      "notes": [
+        {
+          "title": "Physics in the loss",
+          "text": "Implemented physics-informed neural networks and optimized physics-based loss functions against analytical solutions."
+        },
+        {
+          "title": "Testing the assumptions",
+          "text": "Varied boundary conditions in numerical experiments to investigate how robust the models were."
+        }
+      ],
+      "attribution": "Research Assistant, UBC Undergraduate Research Opportunities. September 2023–April 2024.",
+      "links": [],
+      "placement": {
+        "mlData": 0.95,
+        "cloudPlatforms": 0.12
+      },
+      "color": "#c6b4f1",
+      "overview": [
+        "Built physics-informed neural networks in PyTorch. Incorporated governing equations into the loss function.",
+        "Compared results with analytical solutions. Varied boundary conditions to investigate robustness."
+      ]
+    },
+    {
+      "id": "shortener",
+      "name": "URL Shortener",
+      "title": "URL Shortener",
+      "subtitle": "Kubernetes & observability",
+      "kind": "Hackathon project",
+      "context": "Platform engineering",
+      "summary": "A Kubernetes service with deployment and observability at its core.",
+      "technologies": [
+        "Kubernetes",
+        "Flask",
+        "Prometheus",
+        "Grafana"
+      ],
+      "notes": [
+        {
+          "title": "Run the service",
+          "text": "A Flask/Gunicorn application deployed across Kubernetes pods, with ingress routing and TLS certificates."
+        },
+        {
+          "title": "See how it behaves",
+          "text": "Prometheus and Grafana surface latency, traffic, errors, and saturation, alongside structured application logs and alerting."
+        }
+      ],
+      "attribution": "PE Hackathon project, built from the MLH starter template. March–April 2026.",
+      "links": [
+        {
+          "label": "View repository",
+          "url": "https://github.com/amahaj02/url-shortener-mlh-pe"
+        }
+      ],
+      "placement": {
+        "mlData": 0.25,
+        "cloudPlatforms": 0.81
+      },
+      "color": "#edc196",
+      "overview": [
+        "Deployed a Flask/Gunicorn URL shortener on Kubernetes. Configured ingress routing and TLS certificates.",
+        "Tracked latency, traffic, errors, and saturation with Prometheus and Grafana. Added structured application logs and alerting."
+      ]
+    },
+    {
+      "id": "retex",
+      "name": "Retex",
+      "title": "Retex",
+      "subtitle": "Natural-language SQL",
+      "kind": "Application project",
+      "context": "LLM applications & databases",
+      "summary": "Ask retail-data questions in plain language and get SQL-backed results.",
+      "technologies": [
+        "LLaMA 3",
+        "FastAPI",
+        "PostgreSQL",
+        "React"
+      ],
+      "notes": [
+        {
+          "title": "From question to query",
+          "text": "Connects a React interface to a FastAPI backend for model-assisted SQL generation over a retail dataset."
+        },
+        {
+          "title": "The data underneath",
+          "text": "A Python ETL workflow prepares the retail data for querying in PostgreSQL."
+        }
+      ],
+      "attribution": "Application project. April–May 2025.",
+      "links": [
+        {
+          "label": "View repository",
+          "url": "https://github.com/amahaj02/Retex-AI"
+        }
+      ],
+      "placement": {
+        "mlData": 0.69,
+        "cloudPlatforms": 0.77
+      },
+      "color": "#d6c3eb",
+      "overview": [
+        "Connected React to a FastAPI backend. Used LLaMA 3 for model-assisted SQL generation.",
+        "Prepared retail data with a Python ETL workflow. Stored it in PostgreSQL for querying."
+      ]
+    },
+    {
+      "id": "billboard",
+      "name": "Billboard Longevity Prediction",
+      "title": "Billboard Longevity Prediction",
+      "subtitle": "Reproducible machine learning",
+      "kind": "Collaborative academic project",
+      "context": "Modeling & reproducibility",
+      "summary": "A reproducible workflow for predicting album chart longevity.",
+      "technologies": [
+        "R",
+        "Docker",
+        "GNU Make",
+        "Quarto"
+      ],
+      "notes": [
+        {
+          "title": "The analysis",
+          "text": "Cross-validated k-nearest-neighbors regression using albums in Rolling Stone’s Top 500 dataset."
+        },
+        {
+          "title": "The work around the model",
+          "text": "GNU Make connects download, cleaning, validation, training, and Quarto reporting. Docker provides a shared computational environment."
+        }
+      ],
+      "attribution": "Built with Ritisha Jhamb and Roy Chen. January–April 2025.",
+      "links": [
+        {
+          "label": "View repository",
+          "url": "https://github.com/DSCI-310-2025/dsci-310-group-04-dataletes"
+        }
+      ],
+      "placement": {
+        "mlData": 0.91,
+        "cloudPlatforms": 0.39
+      },
+      "color": "#acbaff",
+      "overview": [
+        "Modeled Billboard chart longevity using Rolling Stone’s Top 500 albums. Cross-validated k-nearest-neighbors regression.",
+        "Connected data preparation, validation, training, and Quarto reports with GNU Make. Used Docker for a shared computational environment."
+      ]
+    },
+    {
+      "id": "airbnb",
+      "name": "Airbnb Revenue Prediction",
+      "title": "Airbnb Revenue Prediction",
+      "subtitle": "Feature engineering & model comparison",
+      "kind": "WiDS case competition",
+      "context": "Statistical learning",
+      "summary": "Predicting rental revenue through feature engineering and model comparison.",
+      "technologies": [
+        "R",
+        "glmnet",
+        "caret"
+      ],
+      "notes": [
+        {
+          "title": "Prepare, then compare",
+          "text": "Imputed missing values, encoded categorical features, and compared XGBoost, Ridge, and Lasso regression."
+        },
+        {
+          "title": "Choose with validation",
+          "text": "Used cross-validation and hyperparameter tuning to select a Lasso model, comparing predictions through mean absolute error."
+        }
+      ],
+      "attribution": "WiDS case competition project. October–November 2024.",
+      "links": [
+        {
+          "label": "View repository",
+          "url": "https://github.com/amahaj02/Airbnb-Alternatives-A-Machine-Learning-Approach"
+        }
+      ],
+      "placement": {
+        "mlData": 0.72,
+        "cloudPlatforms": 0.1
+      },
+      "color": "#dfa5c4",
+      "overview": [
+        "Imputed missing values and encoded categorical features. Compared XGBoost, Ridge, and Lasso regression.",
+        "Tuned models with cross-validation. Selected Lasso using mean absolute error."
+      ]
+    },
+    {
+      "id": "telehealth",
+      "name": "Telehealth Access Disparities",
+      "title": "Telehealth Access Disparities",
+      "subtitle": "SQL & statistical inference",
+      "kind": "Collaborative academic project",
+      "context": "Relational data & inference",
+      "summary": "Exploring demographic and geographic patterns in telehealth adoption.",
+      "technologies": [
+        "SQL",
+        "Oracle Database",
+        "Python"
+      ],
+      "notes": [
+        {
+          "title": "Make the data queryable",
+          "text": "Cleaned public telehealth data, organized it into relational tables, and assembled analysis datasets with multi-table SQL joins."
+        },
+        {
+          "title": "Ask a statistical question",
+          "text": "Used hypothesis tests to examine differences in adoption patterns. Observed associations are not evidence of causality."
+        }
+      ],
+      "attribution": "Collaborative academic analysis. January–April 2025.",
+      "links": [
+        {
+          "label": "View repository",
+          "url": "https://github.com/amahaj02/Telehealth-Adoption-Trends"
+        }
+      ],
+      "placement": {
+        "mlData": 0.48,
+        "cloudPlatforms": 0.29
+      },
+      "color": "#a8d0dd",
+      "overview": [
+        "Cleaned public telehealth data into relational tables. Joined them in SQL to assemble analysis datasets.",
+        "Used hypothesis tests to examine adoption differences. Interpreted associations without claiming causality."
+      ]
+    }
+  ],
+  "dimensions": {
+    "mlData": "ML & Data",
+    "cloudPlatforms": "Cloud & Platforms",
+    "method": "Approximate editorial involvement, based on documented project scope. Particle spread and density carry no data."
+  }
+}

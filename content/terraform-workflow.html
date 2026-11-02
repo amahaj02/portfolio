@@ -1,0 +1,18 @@
+<figure class="workflow" aria-labelledby="workflow-caption">
+          <div class="workflow-top"><span>From change to infrastructure</span><svg class="workflow-symbol" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m24 4 17 10v20L24 44 7 34V14L24 4Zm0 0v40M7 14l17 10 17-10M7 34l17-10 17 10"/></svg></div>
+          <ol class="workflow-steps">
+            <li><span class="workflow-dot" aria-hidden="true"></span><div><strong>Authenticate</strong><span>GitHub OIDC · temporary AWS credentials</span></div></li>
+            <li><span class="workflow-dot" aria-hidden="true"></span><div><strong>Plan</strong><span>Generate and save the Terraform plan</span></div></li>
+            <li><span class="workflow-dot" aria-hidden="true"></span><div><strong>Apply</strong><span>Apply that same plan to project IAM roles</span></div></li>
+          </ol>
+          <figcaption id="workflow-caption">S3-backed state. Scoped permissions. One saved plan.</figcaption>
+        </figure>
+        <details class="project-details">
+          <summary><span>Inside the project</span><span class="details-toggle" aria-hidden="true"></span></summary>
+          <div class="details-content"><div class="details-inner">
+            <div><h4>The engineering question</h4><p>How can a deployment workflow manage project roles without also managing the trust and permissions that give the workflow its own access?</p></div>
+            <div><h4>The implementation</h4><p>Terraform manages project IAM roles and policy attachments. GitHub Actions authenticates through OIDC, saves a binary plan, and applies that artifact in a dependent job. State lives in S3 with lockfiles; workflow concurrency serializes deployments.</p></div>
+            <div class="lambda-overview"><h4>The Lambda component</h4><p>Docker builds the function and dependency-layer artifacts. GitHub Actions runs tests and deploys through OIDC. Terraform manages the function, its role, an EventBridge schedule, and CloudWatch logging. Docker is the build environment; Lambda is the runtime.</p></div>
+            <div class="detail-foot"><p>The bootstrap role, OIDC provider, and permissions-boundary policy are configured separately.</p><button class="close-details" type="button">Close overview <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+          </div></div>
+        </details>

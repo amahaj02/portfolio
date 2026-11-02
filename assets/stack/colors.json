@@ -1,0 +1,18 @@
+{
+  "terraform": "#844FBA",
+  "githubactions": "#2088FF",
+  "awslambda": "#FF9900",
+  "docker": "#2496ED",
+  "pytorch": "#EE4C2C",
+  "kubernetes": "#326CE5",
+  "flask": "#000000",
+  "prometheus": "#E6522C",
+  "grafana": "#F46800",
+  "fastapi": "#009688",
+  "postgresql": "#4169E1",
+  "react": "#61DAFB",
+  "r": "#276DC3",
+  "quarto": "#39729E",
+  "python": "#3776AB",
+  "oracle": "#F80000"
+}
