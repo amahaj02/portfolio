@@ -8,7 +8,7 @@ const capture=!process.argv.includes('--no-captures');
 const browser=await chromium.launch({channel:process.env.BROWSER_CHANNEL||'chrome'});
 const report={viewports:[],interactions:[]},failures=[];
 const scroll=async(page,selector)=>{await page.locator(selector).evaluate(el=>el.scrollIntoView({behavior:'instant',block:'start'}));await page.waitForTimeout(100);};
-const ready=page=>page.waitForFunction(()=>document.querySelector('.project-map').dataset.mapState==='ready');
+const ready=async page=>{await page.locator('.project-map').scrollIntoViewIfNeeded();await page.waitForFunction(()=>document.querySelector('.project-map').dataset.mapState==='ready');};
 try{
  const context=await browser.newContext();const page=await context.newPage();
  page.on('pageerror',e=>failures.push(e.message));
@@ -46,17 +46,17 @@ try{
  let hit=false;
  for(const x of [.12,.15,.18,.21,.24]){
   await page.mouse.move(stage.x+stage.width*x,stage.y+stage.height*.41);await page.waitForTimeout(30);
-  if(await info.isVisible()&&await info.locator('h2').textContent()==='Billboard Longevity Prediction'){hit=true;break;}
+  if(await info.isVisible()&&await info.locator('h3').textContent()==='Billboard Longevity Prediction'){hit=true;break;}
  }
  assert.ok(hit,'Billboard point must respond to actual canvas hover');
- assert.equal(await info.isVisible(),true,'Actual canvas hover must open a preview');assert.equal(await info.locator('h2').textContent(),'Billboard Longevity Prediction');
+ assert.equal(await info.isVisible(),true,'Actual canvas hover must open a preview');assert.equal(await info.locator('h3').textContent(),'Billboard Longevity Prediction');
  assert.equal(await info.locator('.map-nearest button').count(),2);
  await page.mouse.move(stage.x+stage.width*.02,stage.y+stage.height*.85);await page.waitForTimeout(250);assert.equal(await info.isVisible(),false,'Hover card dismisses after leaving point');
  const rotationBefore=Number(await hero.getAttribute('data-rotation'));
  await page.mouse.move(stage.x+100,stage.y+stage.height*.85);await page.mouse.down();await page.mouse.move(stage.x+280,stage.y+stage.height*.85,{steps:12});await page.mouse.up();
  assert.ok(Math.abs(Number(await hero.getAttribute('data-rotation'))-rotationBefore)>.8,'Drag must spin the real group');
  await selectProject('retex');
- assert.equal(await info.locator('h2').textContent(),'Retex');
+ assert.equal(await info.locator('h3').textContent(),'Retex');
  assert.equal(await info.locator('.preview-stack li').count(),4);assert.equal(await info.locator('.map-github').getAttribute('href'),'https://github.com/amahaj02/Retex-AI');
  if(capture)await page.locator('.map-stage').screenshot({path:resolve(out,'cloud-desktop-orbited-preview.png')});
  await page.keyboard.press('Escape');assert.equal(await info.isVisible(),false);assert.ok(await canvas.evaluate(el=>el===document.activeElement));
@@ -68,7 +68,7 @@ try{
   await info.locator('.map-close').click();
  }
  await selectProject('billboard');
- assert.equal(await info.locator('h2').textContent(),'Billboard Longevity Prediction','Keyboard focus opens the same preview');
+ assert.equal(await info.locator('h3').textContent(),'Billboard Longevity Prediction','Keyboard focus opens the same preview');
  await canvas.press('Enter');await info.locator('.map-more').click();await page.waitForTimeout(800);
  assert.equal(new URL(page.url()).hash,'#project-billboard');assert.equal(await page.locator('#project-billboard').isVisible(),true);assert.ok(await page.locator('#project-billboard').evaluate(el=>el===document.activeElement));
  assert.equal(await page.locator('#project-billboard .overview-points li').count(),2);
@@ -86,7 +86,7 @@ try{
   const ctx=await browser.newContext({viewport:{width:1440,height:1000}});
   if(mode==='noGL')await ctx.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return /^webgl|experimental-webgl/.test(type)?null:get.call(this,type,...args);};});
   else await ctx.route('**/cdnjs.cloudflare.com/**',r=>r.abort());
-  const p=await ctx.newPage();await p.goto(base);await p.waitForTimeout(1000);
+  const p=await ctx.newPage();await p.goto(base);await p.locator('.project-map').scrollIntoViewIfNeeded();await p.waitForTimeout(1000);
   assert.equal(await p.locator('.project-map').getAttribute('data-map-state'),'fallback');assert.equal(await p.locator('.map-project-link:visible').count(),8);
   await p.locator('[data-map-id="airbnb"]').click();await p.waitForTimeout(600);assert.equal(await p.locator('#project-airbnb').isVisible(),true);await ctx.close();
  }

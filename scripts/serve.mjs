@@ -7,7 +7,7 @@ import { renderProjects } from './render-projects.mjs';
 await renderProjects();
 
 const root = resolve(import.meta.dirname, '..');
-const types = { '.pdf': 'application/pdf', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
+const types = { '.png': 'image/png', '.xml': 'application/xml; charset=utf-8', '.pdf': 'application/pdf', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
 const allowed = new Set(siteFiles.map(file => `/${file}`));
 const port = Number(process.env.PORT || 4173);
 

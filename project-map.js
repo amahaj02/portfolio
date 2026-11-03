@@ -5,7 +5,7 @@
  const stage=root.querySelector('.map-stage'),cv=root.querySelector('canvas');
  const sources=[...root.querySelectorAll('.map-project-link')];
  const small=matchMedia('(max-width: 760px)');
- let started=false,failed=false,engine;
+ let started=false,failed=false,engine,nearViewport=false;
  function loadThree(){
   if(window.THREE)return Promise.resolve();
   return new Promise((resolve,reject)=>{
@@ -15,7 +15,7 @@
   });
  }
  function start(){
-  if(started||small.matches||failed)return;
+  if(started||small.matches||failed||!nearViewport)return;
   started=true;
   Promise.all([
    loadThree(),
@@ -26,7 +26,10 @@
   });
  }
  small.addEventListener('change',()=>{if(engine)engine.resize();else start();});
- start();
+ const preloadObserver=new IntersectionObserver(entries=>{
+  if(entries.some(entry=>entry.isIntersecting)){nearViewport=true;start();preloadObserver.disconnect();}
+ },{rootMargin:'300px 0px'});
+ preloadObserver.observe(root);
  function initialize(){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let reduceMotion=reduced.matches;
@@ -114,7 +117,7 @@ sources.forEach(function(source){
  Number(source.dataset.u),Number(source.dataset.v),group==='ml'?cA:group==='infra'?cB:cFg,!sh,Number(source.dataset.by),Number(source.dataset.bz),source);
 });
 
- var info=root.querySelector('.map-info'),iN=info.querySelector('h2'),iB=info.querySelector('.map-info-summary');
+ var info=root.querySelector('.map-info'),iN=info.querySelector('#map-info-title'),iB=info.querySelector('.map-info-summary');
  var motionButton=root.querySelector('.map-motion');
  var hov=null,pinned=null,overInfo=false,closeTimer;
  var mouse=new THREE.Vector2(0,0),pm=new THREE.Vector2(0,0),rc=new THREE.Raycaster();

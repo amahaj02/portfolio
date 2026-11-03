@@ -109,7 +109,7 @@ h1 span { display: block; }
 .map-project-link[data-map-group="infra"] strong { color: var(--map-cool); }
 .project-map[data-map-state="ready"] .map-access { display: none; }
 .map-info { position: absolute; z-index: 5; right: max(28px,calc((100% - 1160px)/2)); bottom: 14px; width: 300px; padding: 24px; background: #14121c; border: 1px solid #443c51; border-radius: 12px; }
-.map-info h2 { font-family: var(--serif); font-size: 32px; line-height: 1.05; letter-spacing: -.02em; color: var(--paper); margin: 0 16px 12px 0; }
+.map-info h3 { font-family: var(--serif); font-size: 32px; line-height: 1.05; letter-spacing: -.02em; color: var(--paper); margin: 0 16px 12px 0; }
 .map-info-summary { color: #c3bccd; font-size: 13px; line-height: 1.6; }
 .map-close { position: absolute; top: 3px; right: 3px; width: 40px; height: 40px; display: grid; place-items: center; border: 0; background: transparent; color: var(--muted); }
 .map-close .icon { width: 14px; height: 14px; }

@@ -31,7 +31,7 @@ export async function renderProjects(){
         <div class="map-stage-tools wrap"><p class="map-hint" hidden>Drag to spin. Hover a point.</p><button class="map-motion" type="button" hidden>Pause motion</button></div>
         <section id="map-info" class="map-info" aria-labelledby="map-info-title" tabindex="-1" hidden>
           <button class="map-close" aria-label="Close project preview" type="button"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
-          <h2 id="map-info-title"></h2><p class="map-info-summary"></p><ul class="preview-stack" aria-label="Project stack"></ul>
+          <h3 id="map-info-title"></h3><p class="map-info-summary"></p><ul class="preview-stack" aria-label="Project stack"></ul>
           <div class="map-nearest"><span>Nearest on this map</span><div></div></div>
           <div class="preview-links"><a class="map-more text-link">More detail ${arrow}</a><a class="map-github text-link" target="_blank" rel="noreferrer" hidden>GitHub ${arrow}<span class="sr-only"> (opens in a new tab)</span></a></div>
         </section>
